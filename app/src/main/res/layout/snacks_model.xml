@@ -1,6 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@color/white"
+    >
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_margin="10dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_launcher_background"
+        android:id="@+id/imgSnacks"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recycler View"
+        android:textSize="30dp"
+        android:layout_gravity="center"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:id="@+id/txtSnackName"
+        android:layout_below="@+id/imgSnacks"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="100Rs."
+        android:textSize="25dp"
+        android:layout_gravity="center"
+        android:paddingLeft="20dp"
+        android:textColor="@color/black"
+        android:id="@+id/txtSnackPrice"
+        android:layout_below="@+id/txtSnackName"
+        android:layout_centerHorizontal="true"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:padding="11sp"
+        android:layout_below="@id/txtSnackPrice"
+        android:layout_centerHorizontal="true"
+        >
+
+    <ImageView
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:src="@drawable/plus"
+        android:layout_gravity="center"
+        android:paddingLeft="11dp"
+        android:id="@+id/imgPlus"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="20dp"
+        android:paddingLeft="8dp"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:id="@+id/txtQuantity"
+        />
+    <ImageView
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:src="@drawable/minus"
+        android:layout_gravity="center"
+        android:paddingLeft="8dp"
+        android:id="@+id/imgMinus"/>
+    </LinearLayout>
+</RelativeLayout>
