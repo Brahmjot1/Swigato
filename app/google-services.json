@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "85305760135",
+    "project_id": "swigato-50c8e",
+    "storage_bucket": "swigato-50c8e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:85305760135:android:0ad14a9fb5bd8689889b22",
+        "android_client_info": {
+          "package_name": "com.example.swigato"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "85305760135-kt5pju3adb81m99oeqtir8mdtlqgd9tf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdqwg1yH-GJMHOZd5cqXpTE6TfMS1sKBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "85305760135-kt5pju3adb81m99oeqtir8mdtlqgd9tf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
