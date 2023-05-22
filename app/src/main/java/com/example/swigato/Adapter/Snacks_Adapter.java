@@ -47,6 +47,7 @@ public class Snacks_Adapter extends RecyclerView.Adapter<Snacks_Adapter.ViewHold
             public void onClick(View view) {
                 String txt_value = holder.txtQuantity.getText().toString();
                 holder.txtQuantity.setText(String.valueOf(Integer.parseInt(txt_value) + 1));
+
             }
         });
 

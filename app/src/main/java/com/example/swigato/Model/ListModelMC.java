@@ -2,9 +2,9 @@ package com.example.swigato;
 
 public class ListModelMC
 {
-    String MC_price;
-    String MC_name;
-    int MC_image;
+   public String MC_price;
+    public String MC_name;
+    public  int MC_image;
     public ListModelMC(String MC_price,String MC_name,int MC_image)
     {
         this.MC_image=MC_image;

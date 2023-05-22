@@ -17,6 +17,9 @@ public class Snacks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_snacks);
 
+
+        DatabaseHelper databaseHelper = DatabaseHelper.getDB(this);
+
         RecyclerView recyclerView=findViewById(R.id.recyclerViewSnacks);
          recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
