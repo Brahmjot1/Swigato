@@ -12,25 +12,25 @@
         android:theme="@style/Theme.Swigato"
         tools:targetApi="31">
         <activity
-            android:name=".BillPayment"
+            android:name=".Activity.BillPayment"
             android:exported="false" />
         <activity
-            android:name=".MainCourse_Adapter"
+            android:name=".Adapter.MainCourse_Adapter"
             android:exported="false" />
         <activity
-            android:name=".MainCourse"
+            android:name=".Activity.MainCourse"
             android:exported="false" />
         <activity
-            android:name=".Desert"
+            android:name=".Activity.Desert"
             android:exported="false" />
         <activity
-            android:name=".Snacks"
+            android:name=".Activity.Snacks"
             android:exported="false" />
         <activity
-            android:name=".forgotPassword"
+            android:name=".Activity.forgotPassword"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,10 +39,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Register"
+            android:name=".Activity.Register"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.Login"
             android:exported="true" />
     </application>
 

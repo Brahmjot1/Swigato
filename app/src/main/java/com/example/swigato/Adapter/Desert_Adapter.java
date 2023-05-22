@@ -1,6 +1,9 @@
-package com.example.swigato;
+package com.example.swigato.Adapter;
+
+import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.swigato.Activity.Desert;
+import com.example.swigato.Model.ListModelDesert;
+import com.example.swigato.R;
+
 import java.util.ArrayList;
 
 public class Desert_Adapter extends RecyclerView.Adapter<Desert_Adapter.DViewHolder>
@@ -18,12 +25,17 @@ public class Desert_Adapter extends RecyclerView.Adapter<Desert_Adapter.DViewHol
 
     Context context;
     ArrayList<ListModelDesert> arr;
+    ItemClickListener itemClickListener;
 
-    public  Desert_Adapter(Context context,ArrayList<ListModelDesert> arr)
+    public  Desert_Adapter(Context context, ArrayList<ListModelDesert> arr, ItemClickListener itemClickListener)
     {
         this.context=context;
         this.arr=arr;
+        this.itemClickListener=itemClickListener;
     }
+
+
+
     @NonNull
     @Override
     public DViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -36,15 +48,18 @@ public class Desert_Adapter extends RecyclerView.Adapter<Desert_Adapter.DViewHol
     @Override
     public void onBindViewHolder(@NonNull DViewHolder holder, int position)
     {
-        holder.txtDName.setText(arr.get(position).D_name);
-        holder.txtDPrice.setText(arr.get(position).D_price);
-        holder.imgD.setImageResource(arr.get(position).D_image);
+        holder.txtDName.setText(arr.get(position).getD_name());
+        holder.txtDPrice.setText(arr.get(position).getD_price());
+        holder.imgD.setImageResource(arr.get(position).getD_image());
+        holder.txtQuantityD.setText(arr.get(position).getQuantity());
 
         holder.imgPlusD.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 String txt_value = holder.txtQuantityD.getText().toString();
                 holder.txtQuantityD.setText(String.valueOf(Integer.parseInt(txt_value) + 1));
+                itemClickListener.addItem(position,String.valueOf(Integer.parseInt(txt_value) + 1));
             }
         });
 
@@ -56,6 +71,7 @@ public class Desert_Adapter extends RecyclerView.Adapter<Desert_Adapter.DViewHol
                 int txtValue=Integer.parseInt(txt_value);
                 if ( txtValue> 0) {
                     holder.txtQuantityD.setText(String.valueOf(Integer.parseInt(txt_value) - 1));
+                    itemClickListener.addItem(position,String.valueOf(Integer.parseInt(txt_value) - 1));
                 }
                 else{
                     Toast.makeText(context, "Value should be greater than 0", Toast.LENGTH_SHORT).show();
@@ -63,19 +79,13 @@ public class Desert_Adapter extends RecyclerView.Adapter<Desert_Adapter.DViewHol
             }
         });
 
-//        int totalBillD=Integer.parseInt((String) holder.txtQuantityD.getText()) * Integer.parseInt((String) holder.txtDPrice.getText());
-//        System.out.println(totalBillD);
-
     }
 
     @Override
-    public int getItemCount()
-    {
-        return arr.size();
-    }
+    public int getItemCount() {return arr.size();}
 
-    public class DViewHolder extends RecyclerView.ViewHolder
-    {
+
+    public static class DViewHolder extends RecyclerView.ViewHolder{
         ImageView imgD;
         TextView txtDName;
         TextView txtDPrice;
@@ -94,7 +104,13 @@ public class Desert_Adapter extends RecyclerView.Adapter<Desert_Adapter.DViewHol
             imgPlusD=itemView.findViewById(R.id.imgPlusD);
             imgMinusD=itemView.findViewById(R.id.imgMinusD);
             txtQuantityD=itemView.findViewById(R.id.txtQuantityD);
-            String textValue = txtQuantityD.getText().toString();
+
         }
     }
+    public interface ItemClickListener{
+        void addItem(int position,String quantity);
+    }
 }
+
+
+

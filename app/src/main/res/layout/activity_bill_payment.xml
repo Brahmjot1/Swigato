@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BillPayment"
+    tools:context=".Activity.BillPayment"
     android:layout_margin="20dp"
    >
 
@@ -58,9 +58,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100"
             android:textSize="25dp"
             android:layout_alignParentRight="true"
+            android:id="@+id/SnackBillAmount"
             />
 
     </RelativeLayout>
@@ -81,8 +81,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100"
             android:textSize="25dp"
+            android:id="@+id/MainCourseBillAmount"
             android:layout_alignParentRight="true"
             />
 
@@ -104,9 +104,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100"
             android:textSize="25dp"
             android:layout_alignParentRight="true"
+            android:id="@+id/DesertBillAmount"
             />
 
     </RelativeLayout>

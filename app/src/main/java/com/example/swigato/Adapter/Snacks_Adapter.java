@@ -1,7 +1,6 @@
-package com.example.swigato;
+package com.example.swigato.Adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.swigato.Model.ListModel;
+import com.example.swigato.R;
+
 import java.util.ArrayList;
 
 public class Snacks_Adapter extends RecyclerView.Adapter<Snacks_Adapter.ViewHolderSnacks>
@@ -19,11 +21,12 @@ public class Snacks_Adapter extends RecyclerView.Adapter<Snacks_Adapter.ViewHold
 
     Context context;
     ArrayList<ListModel> arr;
-
-    public Snacks_Adapter(Context context,ArrayList<ListModel> arr)
+    ItemClickListener itemClickListener;
+    public Snacks_Adapter(Context context,ArrayList<ListModel> arr,ItemClickListener itemClickListener)
     {
         this.context=context;
         this.arr=arr;
+        this.itemClickListener=itemClickListener;
     }
 
     @NonNull
@@ -41,30 +44,33 @@ public class Snacks_Adapter extends RecyclerView.Adapter<Snacks_Adapter.ViewHold
       holder.txtSnackName.setText(arr.get(position).snack_name);
       holder.txtSnackPrice.setText(arr.get(position).snack_price);
       holder.imgSnack.setImageResource(arr.get(position).snack_image);
+      holder.txtQuantityS.setText(arr.get(position).quantity);
 
-        holder.imgPlus.setOnClickListener(new View.OnClickListener() {
+        holder.imgPlusS.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String txt_value = holder.txtQuantity.getText().toString();
-                holder.txtQuantity.setText(String.valueOf(Integer.parseInt(txt_value) + 1));
-
+            public void onClick(View view)
+            {
+                String txt_value = holder.txtQuantityS.getText().toString();
+                holder.txtQuantityS.setText(String.valueOf(Integer.parseInt(txt_value) + 1));
+                itemClickListener.addItem(position,String.valueOf(Integer.parseInt(txt_value) + 1));
             }
         });
 
-
-        holder.imgMinus.setOnClickListener(new View.OnClickListener() {
+        holder.imgMinusS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String txt_value = holder.txtQuantity.getText().toString();
+                String txt_value = holder.txtQuantityS.getText().toString();
                 int txtValue=Integer.parseInt(txt_value);
                 if ( txtValue> 0) {
-                    holder.txtQuantity.setText(String.valueOf(Integer.parseInt(txt_value) - 1));
+                    holder.txtQuantityS.setText(String.valueOf(Integer.parseInt(txt_value) - 1));
+                    itemClickListener.addItem(position,String.valueOf(Integer.parseInt(txt_value) - 1));
                 }
                 else{
                     Toast.makeText(context, "Value should be greater than 0", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
     }
 
     @Override
@@ -78,21 +84,21 @@ public class Snacks_Adapter extends RecyclerView.Adapter<Snacks_Adapter.ViewHold
     ImageView imgSnack;
     TextView txtSnackName;
     TextView txtSnackPrice;
+    ImageView imgPlusS;
+    ImageView imgMinusS;
+    TextView txtQuantityS;
 
-    ImageView imgPlus;
-    ImageView imgMinus;
-
-    TextView txtQuantity;
     public ViewHolderSnacks(@NonNull View itemView) {
         super(itemView);
         imgSnack=itemView.findViewById(R.id.imgSnacks);
         txtSnackName=itemView.findViewById(R.id.txtSnackName);
         txtSnackPrice=itemView.findViewById(R.id.txtSnackPrice);
-        imgPlus=itemView.findViewById(R.id.imgPlus);
-        imgMinus=itemView.findViewById(R.id.imgMinus);
-        txtQuantity=itemView.findViewById(R.id.txtQuantity);
-        String textValue = txtQuantity.getText().toString();
+        imgPlusS=itemView.findViewById(R.id.imgPlusS);
+        imgMinusS=itemView.findViewById(R.id.imgMinusS);
+        txtQuantityS=itemView.findViewById(R.id.txtQuantityS);
     }
 }
-
+    public interface ItemClickListener {
+        void addItem(int position,String quantity);
+    }
 }

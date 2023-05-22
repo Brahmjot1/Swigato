@@ -56,24 +56,24 @@
         android:src="@drawable/plus"
         android:layout_gravity="center"
         android:paddingLeft="11dp"
-        android:id="@+id/imgPlus"
+        android:id="@+id/imgPlusS"
         />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="20dp"
-        android:paddingLeft="8dp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:id="@+id/txtQuantity"
-        />
-    <ImageView
-        android:layout_width="30sp"
-        android:layout_height="30sp"
-        android:src="@drawable/minus"
-        android:layout_gravity="center"
-        android:paddingLeft="8dp"
-        android:id="@+id/imgMinus"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:paddingLeft="8dp"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:id="@+id/txtQuantityS"
+            />
+        <ImageView
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/minus"
+            android:layout_gravity="center"
+            android:paddingLeft="8dp"
+            android:id="@+id/imgMinusS"/>
+
     </LinearLayout>
 </RelativeLayout>

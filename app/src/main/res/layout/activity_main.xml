@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Activity.MainActivity"
     android:background="@drawable/background_swigato">
 <RelativeLayout
     android:layout_width="match_parent"
@@ -71,19 +71,6 @@
         android:textSize="25dp"
         android:id="@+id/txtDesert" />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtPayBill"
-        android:text="PayBill"
-        android:textColor="#49BA4D"
-        android:textSize="30dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
-        android:textStyle="bold"
-        />
 
 </RelativeLayout>
 
