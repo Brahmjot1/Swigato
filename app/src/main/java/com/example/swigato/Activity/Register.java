@@ -32,7 +32,7 @@ public class Register extends AppCompatActivity {
             EditText txtPasswordR = findViewById(R.id.txtPasswordR);
             Button btnRegister = findViewById(R.id.btnRegister);
             TextView txtGotoSignin = findViewById(R.id.txtGotoSigin);
-            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+             mAuth = FirebaseAuth.getInstance();
 
             final Pattern PASSWORD_PATTERN =
                     Pattern.compile("^(?=.*[0-9])"
@@ -61,17 +61,29 @@ public class Register extends AppCompatActivity {
                                     @Override
                                     public void onComplete(@NonNull Task<AuthResult> task) {
                                         if (task.isSuccessful()) {
-                                            Toast.makeText(Register.this, "Account Created!!", Toast.LENGTH_SHORT).show();
 
-                                            Intent iNext = new Intent(Register.this, Login.class);
-                                            startActivity(iNext);
-                                            finish();
+                                            mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful())
+                                                    {
+                                                        Toast.makeText(Register.this, "Account Created!!.Please Verify Email", Toast.LENGTH_SHORT).show();
+                                                        Intent iNext = new Intent(Register.this, Login.class);
+                                                        startActivity(iNext);
+                                                        finish();
+                                                    }
+                                                    else
+                                                    {
+                                                        Toast.makeText(Register.this, "Authentication failed.",
+                                                                Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
 
                                         } else {
                                             // If sign in fails, display a message to the user.
                                             Toast.makeText(Register.this, "Authentication failed.",
                                                     Toast.LENGTH_SHORT).show();
-
                                         }
                                     }
                                 });
@@ -83,7 +95,7 @@ public class Register extends AppCompatActivity {
                 public void onClick(View view) {
                     Intent iNext = new Intent(Register.this, Login.class);
                     startActivity(iNext);
-//                finish();
+                    finish();
                 }
             });
 
